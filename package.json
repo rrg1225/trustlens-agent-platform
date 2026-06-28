@@ -1,0 +1,40 @@
+{
+  "name": "trustlens-agent-platform",
+  "version": "1.0.0",
+  "description": "Full-stack AI governance agent platform for vendor intake, evidence-grounded risk scoring, control mapping, and auditable approval handoffs.",
+  "type": "module",
+  "license": "MIT",
+  "author": "lixian",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "node --watch server/index.js",
+    "dev:client": "vite --host 0.0.0.0",
+    "start": "node server/index.js",
+    "test": "node --test test/*.test.js && npm run eval",
+    "eval": "node eval/scenarios.test.js",
+    "build": "vite build",
+    "ci:local": "npm test && npm run build"
+  },
+  "keywords": [
+    "ai-agent",
+    "ai-governance",
+    "vendor-risk",
+    "rag",
+    "guardrails",
+    "audit-log",
+    "react",
+    "express"
+  ],
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "vite": "^6.4.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
