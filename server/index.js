@@ -37,7 +37,7 @@ export async function createApp(options = {}) {
 
   if (process.env.NODE_ENV === "production") {
     app.use(express.static(join(rootDir, "dist")));
-    app.get("*", (_req, res) => res.sendFile(join(rootDir, "dist", "index.html")));
+    app.get(/.*/, (_req, res) => res.sendFile(join(rootDir, "dist", "index.html")));
   }
 
   app.use(notFound);

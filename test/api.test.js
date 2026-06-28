@@ -44,7 +44,10 @@ test("runs an evidence-grounded high-risk vendor assessment", async (t) => {
   assert.equal(body.run.final.quality.validationPassRate, 100);
 
   const metrics = await fetch(`${baseUrl}/api/metrics`);
-  assert.equal((await metrics.json()).executiveReview, 1);
+  const metricBody = await metrics.json();
+  assert.equal(metricBody.executiveReview, 1);
+  assert.equal(metricBody.reviewQueue, 1);
+  assert.ok(metricBody.approvalDebt >= 1);
 });
 
 test("blocks approval-bypass instructions before tool execution", async (t) => {

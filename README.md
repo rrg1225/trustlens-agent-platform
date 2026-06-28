@@ -16,7 +16,7 @@ Companies adopting AI tools need a repeatable way to answer: What data does this
 - Risk engine: explainable risk score, tier, decision route, and drivers.
 - Draft-only actions: mitigation and handoff tools never perform external writes.
 - Auditability: every run returns trace events, validation results, quality metrics, and saved assessment summaries.
-- Operations: request IDs, security headers, runtime metrics, operational scorecard.
+- Operations: request IDs, security headers, runtime metrics, risk queue metrics, operational scorecard, and repository health checks.
 - Frontend: React dashboard for intake, tools, decision handoff, trace, metrics, and history.
 
 ## Quick Start
@@ -47,6 +47,8 @@ No secrets are required for the default deterministic demo. `.env.example` inclu
 ```bash
 npm test
 npm run eval
+npm run health
+npm run ops:check
 npm run build
 ```
 

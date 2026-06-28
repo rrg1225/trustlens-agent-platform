@@ -94,9 +94,9 @@ export default function App() {
 
       <section className="metric-grid">
         <Metric label="Assessments" value={metrics?.total ?? 0} />
-        <Metric label="Executive review" value={metrics?.executiveReview ?? 0} />
+        <Metric label="Review queue" value={metrics?.reviewQueue ?? 0} />
         <Metric label="Avg risk" value={metrics?.averageRisk ?? 0} />
-        <Metric label="Mapped controls" value={metrics?.mappedControls ?? 0} />
+        <Metric label="Approval debt" value={metrics?.approvalDebt ?? 0} />
       </section>
 
       <section className="workspace">

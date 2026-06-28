@@ -55,12 +55,19 @@ export async function createStore(filePath) {
 
     async metrics() {
       const assessments = (await read()).assessments;
+      const reviewQueue = assessments.filter((item) => ["executive-review", "control-owner-review"].includes(item.status));
+      const criticalTier = assessments.filter((item) => item.riskTier === "critical");
+      const blocked = assessments.filter((item) => item.status === "blocked");
       return {
         total: assessments.length,
         executiveReview: assessments.filter((item) => item.status === "executive-review").length,
         controlOwnerReview: assessments.filter((item) => item.status === "control-owner-review").length,
         averageRisk: assessments.length ? Math.round(assessments.reduce((sum, item) => sum + item.riskScore, 0) / assessments.length) : 0,
         mappedControls: assessments.reduce((sum, item) => sum + item.mappedControls, 0),
+        reviewQueue: reviewQueue.length,
+        criticalTier: criticalTier.length,
+        blocked: blocked.length,
+        approvalDebt: reviewQueue.reduce((sum, item) => sum + Math.max(1, item.mappedControls), 0),
         byTier: groupCount(assessments, "riskTier")
       };
     },
